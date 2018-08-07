@@ -15,5 +15,11 @@
             "KMAKing\\ResourceGenerator\\": "src/"
         }
     },
-
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KMAKing\\ResourceGenerator\\KMAKingServiceProvider"
+            ],
+        }
+    },
 }
