@@ -1,0 +1,43 @@
+
+            @include('component::form-group', [
+                'label' => 'Title',
+                'name' => 'title',
+                'value' => old('title', $[=|ActionName|=]->title ?? ""),
+                'is_error' => $errors->has('title'),
+                'error' => $errors->first('title')
+            ])
+
+            @include('component::form-group.textarea', [
+                'label' => 'Description',
+                'name' => 'description',
+                'value' => old('description', $[=|ActionName|=]->description ?? ""),
+                'is_error' => $errors->has('description'),
+                'error' => $errors->first('description')
+            ])
+
+            @include('component::form-group.checkbox', [
+                'label' => 'Tag',
+                'name' => 'tag',
+                'choice' => [
+                	'tag one' => "Tag One",
+                	'tag two' => "Tag Two",
+                	'tag three' => "Tag Three",
+                	'tag four' => "Tag Four",
+                	'tag five' => "Tag Five",
+                ],
+                'value' => old('tag', $[=|ActionName|=]->tag ?? []),
+                'is_error' => $errors->has('tag'),
+                'error' => $errors->first('tag')
+            ])
+
+            @include('component::form-group.radio', [
+                'label' => 'Visible To',
+                'name' => 'visible_to',
+                'choice' => [
+                	'1' => "Private",
+                	'2' => "Public",
+                ],
+                'value' => old('visible_to', $[=|ActionName|=]->visible_to ?? ""),
+                'is_error' => $errors->has('visible_to'),
+                'error' => $errors->first('visible_to')
+            ])

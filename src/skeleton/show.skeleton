@@ -1,0 +1,72 @@
+@extends('[=|LayoutName|=]')
+
+@section('title', 'View [=|ModelName|=]')
+@section('breadcrumbs', Breadcrumbs::render('[=|ActionName|=].show', $[=|ActionName|=]))
+
+@section('content')
+
+    @panel([
+        'title' => 'View [=|ModelName|=]',
+        'description' => 'View [=|ActionName|=] in detail',
+        'column' => 6,  // Default 12
+        'offset' => 3   // Default 0 
+    ])
+        @slot('right')
+            <a class="btn btn-outline-primary" href="{{ route('[=|RouteActionName|=].index') }}" role="button">
+                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back
+            </a>
+
+            <div class="dropdown float-right ml-1">
+            	<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            		<i class="fa fa-ellipsis-h"></i>
+            	</a>
+            	<div class="dropdown-menu dropdown-menu-right">
+            		<a class="dropdown-item" href="{{ route('[=|RouteActionName|=].create') }}">
+            			<i class="fa fa-plus"></i> New
+            		</a>
+            		<a class="dropdown-item" href="{{ $[=|ActionName|=]->url->edit }}">
+            			<i class="fa fa-pencil"></i> Edit
+            		</a>
+            		<a class="dropdown-item" href="{{ $[=|ActionName|=]->url->destroy }}" id="delete">
+            			<i class="fa fa-trash"></i> Delete
+            		</a>
+            	</div>
+            </div> 
+        @endslot
+
+        <div class="profile-info">
+        	<ul>
+        		<li>
+        			<span>Title</span>
+        			{{ $[=|ActionName|=]->title }}
+        		</li>
+        		<li>
+        			<span>Description</span>
+        			{{ $[=|ActionName|=]->description }}
+        		</li>
+        		<li>
+        			<span>Tag</span>
+        			{{ join($[=|ActionName|=]->tag, ", ") }}
+        		</li>
+        		<li>
+        			<span>Visible to</span>
+        			@if($[=|ActionName|=]->visible_to==1)
+        				Public
+        			@else
+        				Private
+        			@endif
+        		</li>
+        	</ul>
+        </div>
+
+    @endpanel
+
+@endsection
+
+@section('script')
+
+    @component('component::confirm.link')
+        delete
+    @endcomponent
+
+@endsection

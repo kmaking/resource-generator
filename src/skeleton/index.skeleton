@@ -1,0 +1,78 @@
+@extends('[=|LayoutName|=]')
+
+@section('title', '[=|ModelNameP|=]')
+@section('breadcrumbs', Breadcrumbs::render('[=|ActionName|=].index'))
+
+@section('content')
+
+    @panel([
+        'title' => '[=|ModelNameP|=]',
+        'description' => 'All [=|ActionNameP|=] list'
+    ])
+        @slot('right')
+            <a class="btn btn-outline-primary" href="{{ route('[=|RouteActionName|=].create') }}" role="button">
+                <i class="fa fa-plus" aria-hidden="true"></i> Add
+            </a>
+        @endslot
+
+        <table class="stripe hover nowrap" data-table-export>
+            <thead>
+                <tr>
+                    <th class="table-plus">#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Tags</th>
+                    <th>Posted On</th>
+                    <th class="datatable-nosort no-export">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($[=|ActionNameP|=] as $a)
+                    <tr>
+                        <td class="table-plus">{{ $loop->iteration }}</td>
+                        <td>{{ $a->title }}</td>
+                        <td>{{ $a->description }}</td>
+                        <td>{{ join(", ", $a->tag) }}</td>
+                        <td>{{ $a->created_at }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ $a->url->show }}">
+                                        <i class="fa fa-eye"></i> View
+                                    </a>
+                                    <a class="dropdown-item" href="{{ $a->url->edit }}">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                    <a class="dropdown-item" href="{{ $a->url->destroy }}" id="delete">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+    @endpanel
+
+@endsection
+
+@section('style')
+    @component('component::datatable.style')
+    @endcomponent
+@endsection
+
+@section('script')
+
+    @component('component::datatable.script')
+    @endcomponent
+
+    @component('component::confirm.link')
+        delete
+    @endcomponent
+
+@endsection

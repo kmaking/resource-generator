@@ -1,0 +1,19 @@
+{
+    "name": "kmaking/resource-generator",
+    "description": "This package allow to generate resource for your application, resources includes views and controller",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ketan Ajani",
+            "email": "ketan.m.ajani@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "KMAKing\\ResourceGenerator\\": "src/"
+        }
+    },
+
+}

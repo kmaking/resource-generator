@@ -1,0 +1,87 @@
+<?php
+
+namespace [=|ControllerNamespace|=];
+
+use App\[=|ModelPath|=];
+use Illuminate\Http\Request;
+[=|UseBaseController|=]
+
+class [=|ModelName|=]Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $[=|ActionNameP|=] = [=|ModelName|=]::all();
+        return view('[=|ViewPath|=].index', compact('[=|ActionNameP|=]'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('[=|ViewPath|=].create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\[=|ModelPath|=]  $[=|ActionName|=]
+     * @return \Illuminate\Http\Response
+     */
+    public function show([=|ModelName|=] $[=|ActionName|=])
+    {
+        return view('[=|ViewPath|=].show', compact('[=|ActionName|=]'));   
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\[=|ModelPath|=]  $[=|ActionName|=]
+     * @return \Illuminate\Http\Response
+     */
+    public function edit([=|ModelName|=] $[=|ActionName|=])
+    {
+        return view('[=|ViewPath|=].edit', compact('[=|ActionName|=]'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\[=|ModelPath|=]  $[=|ActionName|=]
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, [=|ModelName|=] $[=|ActionName|=])
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\[=|ModelPath|=]  $[=|ActionName|=]
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy([=|ModelName|=] $[=|ActionName|=])
+    {
+        //
+    }
+}

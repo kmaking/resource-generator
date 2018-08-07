@@ -1,0 +1,37 @@
+@extends('[=|LayoutName|=]')
+
+@section('title', 'Edit[=|ModelName|=]')
+@section('breadcrumbs', Breadcrumbs::render('[=|ActionName|=].edit', $[=|ActionName|=]))
+
+@section('content')
+
+    @panel([
+        'title' => 'Edit [=|ModelName|=]',
+        'description' => 'Edit exist [=|ActionName|=]',
+        'column' => 6,  // Default 12
+        'offset' => 3   // Default 0 
+    ])
+        @slot('right')
+            <a class="btn btn-outline-primary" href="{{ route('[=|RouteActionName|=].index') }}" role="button">
+                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back
+            </a>
+        @endslot
+
+        @form(['route' => $[=|ActionName|=]->url->update, 'method' => 'patch'])
+  
+            @include('[=|ViewPath|=].form', compact('[=|ActionName|=]'))
+
+            @include('component::form-footer')
+
+        @endform
+
+    @endpanel
+
+@endsection
+
+@section('script')
+    @component('component::confirm.form')
+        form-data
+    @endcomponent
+@endsection
+
