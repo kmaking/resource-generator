@@ -19,7 +19,7 @@
         "laravel": {
             "providers": [
                 "KMAKing\\ResourceGenerator\\KMAKingServiceProvider"
-            ],
+            ]
         }
     },
 }
