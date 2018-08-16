@@ -79,6 +79,20 @@ class ResourceGenerator extends Command
         $this->callUrlPresenterGenerator();
         $this->info(Artisan::output());
 
+        $this->question("\nAdd below line into your route file.");
+        $this->comment(sprintf("\nRoute::resource('%s', '%sController');", 
+            $this->action_name, 
+            $this->model_name
+        ));
+
+        $this->question("\nAdd below lines into your ".$this->model_name." model file.");
+        $this->comment(sprintf("\nuse App\UrlPresenters\%sUrlPresenter;", $this->model_name));
+        $this->info("...");
+        $this->info("...");
+        $this->comment("protected \$appends = [\n    'url'\n];");
+
+        $this->comment(sprintf("\npublic function getUrlAttribute()\n{\n    return new %sUrlPresenter(\$this);\n}", $this->model_name));
+
 
     }
 
