@@ -9,7 +9,9 @@
             "email": "ketan.m.ajani@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+    	"kmaking/admin-template":"1.0.*"
+    },
     "autoload": {
         "psr-4": {
             "KMAKing\\ResourceGenerator\\": "src/"
