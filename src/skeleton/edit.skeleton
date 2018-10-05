@@ -1,6 +1,6 @@
 @extends('[=|LayoutName|=]')
 
-@section('title', 'Edit[=|ModelName|=]')
+@section('title', 'Edit [=|ModelName|=]')
 @section('breadcrumbs', Breadcrumbs::render('[=|ActionName|=].edit', $[=|ActionName|=]))
 
 @section('content')
