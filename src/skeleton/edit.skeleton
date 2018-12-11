@@ -28,10 +28,3 @@
     @endpanel
 
 @endsection
-
-@section('script')
-    @component('component::confirm.form')
-        form-data
-    @endcomponent
-@endsection
-

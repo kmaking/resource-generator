@@ -21,7 +21,6 @@
                     <th class="table-plus">#</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Tags</th>
                     <th>Posted On</th>
                     <th class="datatable-nosort no-export">Action</th>
                 </tr>
@@ -32,7 +31,6 @@
                         <td class="table-plus">{{ $loop->iteration }}</td>
                         <td>{{ $a->title }}</td>
                         <td>{{ $a->description }}</td>
-                        <td>{{ join(", ", $a->tag) }}</td>
                         <td>{{ $a->created_at }}</td>
                         <td>
                             <div class="dropdown">
@@ -61,12 +59,12 @@
 
 @endsection
 
-@section('style')
+@push('style')
     @component('component::datatable.style')
     @endcomponent
-@endsection
+@endpush
 
-@section('script')
+@push('script')
 
     @component('component::datatable.script')
     @endcomponent
@@ -75,4 +73,4 @@
         delete
     @endcomponent
 
-@endsection
+@endpush

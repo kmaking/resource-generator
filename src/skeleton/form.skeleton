@@ -1,5 +1,5 @@
 
-            @include('component::form-group', [
+            @include('component::form-group.input', [
                 'label' => 'Title',
                 'name' => 'title',
                 'value' => old('title', $[=|ActionName|=]->title ?? ""),
@@ -15,29 +15,8 @@
                 'error' => $errors->first('description')
             ])
 
-            @include('component::form-group.checkbox', [
-                'label' => 'Tag',
-                'name' => 'tag',
-                'choice' => [
-                	'tag one' => "Tag One",
-                	'tag two' => "Tag Two",
-                	'tag three' => "Tag Three",
-                	'tag four' => "Tag Four",
-                	'tag five' => "Tag Five",
-                ],
-                'value' => old('tag', $[=|ActionName|=]->tag ?? []),
-                'is_error' => $errors->has('tag'),
-                'error' => $errors->first('tag')
-            ])
-
-            @include('component::form-group.radio', [
-                'label' => 'Visible To',
-                'name' => 'visible_to',
-                'choice' => [
-                	'1' => "Private",
-                	'2' => "Public",
-                ],
-                'value' => old('visible_to', $[=|ActionName|=]->visible_to ?? ""),
-                'is_error' => $errors->has('visible_to'),
-                'error' => $errors->first('visible_to')
-            ])
+@push('script')
+    @component('component::confirm.form')
+        form-data
+    @endcomponent
+@endpush
